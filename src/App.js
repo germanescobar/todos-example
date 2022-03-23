@@ -55,18 +55,18 @@ function App() {
 
   return (
     <div className="wrapper">
-      <div className="list">
+      <div className="list" data-testid="todo">
         <h3>Por hacer:</h3>
         <input type="text" onKeyPress={createTask} onChange={updateTask} value={task} placeholder="Ingresa una tarea y oprime Enter"></input>
         <ul className="todo">
-          { tasks.filter(task => !task.completed).map(task => <Task task={task} toggleTask={toggleTask} deleteTask={deleteTask} />)}
+          { tasks.filter(task => !task.completed).map(task => <Task key={task.id} task={task} toggleTask={toggleTask} deleteTask={deleteTask} />)}
         </ul>
       </div>
 
-      <div className="list">
+      <div className="list" data-testid="done">
         <h3>Hecho:</h3>
         <ul className="done">
-        { tasks.filter(task => task.completed).map(task => <Task task={task} toggleTask={toggleTask} deleteTask={deleteTask} />)}
+        { tasks.filter(task => task.completed).map(task => <Task key={task.id} task={task} toggleTask={toggleTask} deleteTask={deleteTask} />)}
         </ul>
       </div>
     </div>
